@@ -1,0 +1,637 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - Tanraya Pvt Ltd</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/js/all.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/css/bootstrap.min.css">
+    <style>
+        :root {
+            --primary: #1a365d;
+            --primary-light: #2c5282;
+            --secondary: #4299e1;
+            --accent: #ebf8ff;
+            --text: #2d3748;
+            --text-light: #718096;
+            --background: #f7fafc;
+            --white: #ffffff;
+            --success: #48bb78;
+            --error: #dc3545;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        }
+
+        body {
+            background: linear-gradient(to bottom, var(--accent), var(--white));
+            color: var(--text);
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+
+        .development-notice {
+            background: var(--primary);
+            color: var(--white);
+            text-align: center;
+            padding: 0.75rem;
+            font-size: 0.875rem;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .card {
+            background: var(--white);
+            border-radius: 1rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            margin-bottom: 2rem;
+            overflow: hidden;
+        }
+
+        .header {
+            text-align: center;
+            padding: 3rem 2rem;
+        }
+
+        .header h1 {
+            color: var(--primary);
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .header p {
+            color: var(--primary-light);
+            font-size: 1.25rem;
+        }
+
+        .section {
+            padding: 2rem;
+        }
+
+        .section h2 {
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+            font-size: 1.875rem;
+        }
+
+        .section p {
+            color: var(--text-light);
+            margin-bottom: 1.5rem;
+            font-size: 1.125rem;
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: var(--primary);
+            font-weight: 500;
+        }
+
+        .input-group {
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+        }
+
+        .input-group-row {
+            display: flex;
+            align-items: stretch;
+            gap: 0.5rem;
+            width: 100%;
+        }
+
+        .input-icon-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: var(--accent);
+            border: 1px solid #e2e8f0;
+            border-radius: 0.5rem;
+            min-width: 3rem;
+            color: var(--text-light);
+        }
+
+        .input-field-container {
+            flex: 1;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 0.75rem 1rem;
+            border: 1px solid #e2e8f0;
+            border-radius: 0.5rem;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            background-color: var(--white);
+        }
+
+        textarea.form-control {
+            height: 150px;
+            resize: vertical;
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--secondary);
+            box-shadow: 0 0 0 3px rgba(66, 153, 225, 0.15);
+        }
+
+        .form-control.is-invalid {
+            border-color: var(--error);
+            padding-right: calc(1.5em + 0.75rem);
+            background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12' width='12' height='12' fill='none' stroke='%23dc3545'%3e%3ccircle cx='6' cy='6' r='4.5'/%3e%3cpath stroke-linejoin='round' d='M5.8 3.6h.4L6 6.5z'/%3e%3ccircle cx='6' cy='8.2' r='.6' fill='%23dc3545' stroke='none'/%3e%3c/svg%3e");
+            background-repeat: no-repeat;
+            background-position: right calc(0.375em + 0.1875rem) center;
+            background-size: calc(0.75em + 0.375rem) calc(0.75em + 0.375rem);
+        }
+
+        .form-control.is-valid {
+            border-color: var(--success);
+            padding-right: calc(1.5em + 0.75rem);
+            background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8'%3e%3cpath fill='%23198754' d='M2.3 6.73L.6 4.53c-.4-1.04.46-1.4 1.1-.8l1.1 1.4 3.4-3.8c.6-.63 1.6-.27 1.2.7l-4 4.6c-.43.5-.8.4-1.1.1z'/%3e%3c/svg%3e");
+            background-repeat: no-repeat;
+            background-position: right calc(0.375em + 0.1875rem) center;
+            background-size: calc(0.75em + 0.375rem) calc(0.75em + 0.375rem);
+        }
+
+        .invalid-feedback {
+            color: var(--error);
+            font-size: 0.875rem;
+            margin-top: 0.25rem;
+            display: none;
+        }
+
+        .form-control.is-invalid ~ .invalid-feedback {
+            display: block;
+        }
+
+        button {
+            background: var(--primary);
+            color: var(--white);
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 0.5rem;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        button:hover {
+            background: var(--primary-light);
+            transform: translateY(-1px);
+        }
+
+        button:disabled {
+            opacity: 0.7;
+            cursor: not-allowed;
+        }
+
+        .products {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .product-tag {
+            background: var(--accent);
+            color: var(--primary);
+            padding: 0.5rem 1rem;
+            border-radius: 0.5rem;
+            font-size: 0.875rem;
+        }
+
+        .loading-spinner {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(255, 255, 255, 0.8);
+            z-index: 999;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+
+        .spinner {
+            width: 50px;
+            height: 50px;
+            border: 5px solid var(--accent);
+            border-top: 5px solid var(--primary);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        .loading-text {
+            margin-top: 1rem;
+            color: var(--primary);
+            font-weight: 500;
+        }
+
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-content {
+            background: var(--white);
+            padding: 2rem;
+            border-radius: 1rem;
+            max-width: 500px;
+            width: 90%;
+            text-align: center;
+        }
+
+        .modal-title {
+            color: var(--primary);
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .modal-body {
+            color: var(--text);
+            margin-bottom: 1.5rem;
+        }
+
+        .modal-email {
+            color: var(--primary);
+            font-weight: 500;
+        }
+
+        .modal-close {
+            background: var(--primary);
+            color: var(--white);
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: 0.5rem;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .modal-close:hover {
+            background: var(--primary-light);
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 1rem;
+            }
+
+            .header {
+                padding: 2rem 1rem;
+            }
+
+            .header h1 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="development-notice">
+        🚧 Our main website is under development. Meanwhile, please use this form to get in touch with us. 🚧
+    </div>
+    
+    <div class="container">
+        <div class="card header">
+            <h1>TANRAYA PVT LTD</h1>
+            <p>Your Global Partner in Premium Agro Products</p>
+        </div>
+
+        <div class="card section">
+            <h2>About Us</h2>
+            <p>Tanraya Pvt Ltd specializes in exporting premium quality agro products from India to global markets. Through our established network of farmers, wholesalers, and manufacturers, we facilitate the supply of high-quality products to international buyers. We focus on maintaining consistent quality standards and building reliable trade relationships.</p>
+            
+            <h2>Our Products</h2>
+            <p>We export quality agro products including:</p>
+            <div class="products">
+                <span class="product-tag">Jaggery</span>
+                <span class="product-tag">Sugar</span>
+                <span class="product-tag">Dals</span>
+                <span class="product-tag">Dried Red Chillies</span>
+                <span class="product-tag">Cashews</span>
+                <span class="product-tag">Honey</span>
+                <span class="product-tag">Fresh Vegetables</span>
+                <span class="product-tag">Whole Spices</span>
+                <span class="product-tag">Peanuts</span>
+                <span class="product-tag">And More</span>
+            </div>
+        </div>
+
+        <div class="card section">
+            <h2>Contact Us</h2>
+            <p>Looking to partner with us? Fill out the form below and we'll get back to you shortly.</p>
+            
+            <form id="contactForm">
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label for="name">Full Name *</label>
+                        <div class="input-group">
+                            <div class="input-group-row">
+                                <div class="input-icon-container">
+                                    <i class="fas fa-user"></i>
+                                </div>
+                                <div class="input-field-container">
+                                    <input type="text" id="name" class="form-control" required>
+                                    <div class="invalid-feedback">Name must be 2-50 characters long and contain only letters</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="company">Company Name *</label>
+                        <div class="input-group">
+                            <div class="input-group-row">
+                                <div class="input-icon-container">
+                                    <i class="fas fa-building"></i>
+                                </div>
+                                <div class="input-field-container">
+                                    <input type="text" id="company" class="form-control" required>
+                                    <div class="invalid-feedback">Company name must be 2-50 characters long</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">Email Address *</label>
+                        <div class="input-group">
+                            <div class="input-group-row">
+                                <div class="input-icon-container">
+                                    <i class="fas fa-envelope"></i>
+                                </div>
+                                <div class="input-field-container">
+                                    <input type="email" id="email" class="form-control" required>
+                                    <div class="invalid-feedback">Please enter a valid email address</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Phone Number *</label>
+                        <div class="input-group">
+                            <div class="input-group-row">
+                                <div class="input-icon-container">
+                                    <i class="fas fa-phone"></i>
+                                </div>
+                                <div class="input-field-container">
+                                    <input type="tel" id="phone" class="form-control" required>
+                                    <div class="invalid-feedback">Please enter a valid phone number with country code (e.g., +1 234 567 8900)</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="country">Country *</label>
+                        <div class="input-group">
+                            <div class="input-group-row">
+                                <div class="input-icon-container">
+                                    <i class="fas fa-globe"></i>
+                                </div>
+                                <div class="input-field-container">
+                                    <input type="text" id="country" class="form-control" required>
+                                    <div class="invalid-feedback">Country must be 2-50 characters long and contain only letters</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="interest">Interested In *</label>
+                        <div class="input-group">
+                            <div class="input-group-row">
+                                <div class="input-icon-container">
+                                    <i class="fas fa-box"></i>
+                                </div>
+                                <div class="input-field-container">
+                                    <select id="interest" class="form-control" required>
+                                        <option value="">Select Product</option>
+                                        <option value="jaggery">Jaggery</option>
+                                        <option value="sugar">Sugar</option>
+                                        <option value="dals">Dals</option>
+                                        <option value="chillies">Dried Red Chillies</option>
+                                        <option value="cashews">Cashews</option>
+                                        <option value="honey">Honey</option>
+                                        <option value="vegetables">Fresh Vegetables</option>
+                                        <option value="spices">Whole Spices</option>
+                                        <option value="peanuts">Peanuts</option>
+                                        <option value="other">Other Products</option>
+                                    </select>
+                                </div>
+                                <div class="invalid-feedback">Please select a product</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="message">Message</label>
+                    <textarea id="message" class="form-control"></textarea>
+                </div>
+
+                <button type="submit">Send Message</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Loading Spinner -->
+    <div class="loading-spinner" id="loadingSpinner" style="display: none;">
+        <div class="spinner"></div>
+        <div class="loading-text">Sending your message...</div>
+    </div>
+
+    <!-- Success Modal -->
+    <div class="modal-overlay" id="successModal" style="display: none;">
+        <div class="modal-content">
+            <h3 class="modal-title">Thank You for Contacting Us!</h3>
+            <div class="modal-body">
+                <p>We will get back to you within 24 hours.</p>
+                <p>In the meantime, you can directly contact us at:</p>
+                <p class="modal-email"><a href="mailto:operations@tanraya.com">operations@tanraya.com</a></p>
+            </div>
+            <button class="modal-close" id="modalCloseButton">Close</button>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    <script>
+        // Initialize EmailJS
+        (function() {
+            emailjs.init("wfCQyBr3XfnERdyJD");
+        })();
+
+        // Validation patterns
+        const patterns = {
+            name: /^[A-Za-z\s]{2,50}$/,
+            company: /^[\w\s-]{2,50}$/,
+            email: /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,
+            phone: /^\+(?:[0-9] ?){6,14}[0-9]$/,
+            country: /^[A-Za-z\s]{2,50}$/,
+        };
+
+        // Function to close modal
+        function closeModal() {
+            document.getElementById('successModal').style.display = 'none';
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            // Set up modal close button
+            const modalCloseButton = document.getElementById('modalCloseButton');
+            if (modalCloseButton) {
+                modalCloseButton.addEventListener('click', closeModal);
+            }
+
+            const form = document.getElementById('contactForm');
+            const inputs = ['name', 'company', 'email', 'phone', 'country'];
+            
+            // Validate single field
+            function validateField(field) {
+                if (!field) return false;
+                
+                // Skip validation for empty optional message field
+                if (field.id === 'message' && field.value.length === 0) {
+                    field.classList.remove('is-invalid', 'is-valid');
+                    return true;
+                }
+
+                const pattern = patterns[field.id];
+                if (!pattern) return false;
+
+                const isValid = pattern.test(field.value);
+                
+                if (isValid) {
+                    field.classList.remove('is-invalid');
+                    field.classList.add('is-valid');
+                } else {
+                    field.classList.remove('is-valid');
+                    field.classList.add('is-invalid');
+                }
+                return isValid;
+            }
+
+            // Add real-time validation
+            inputs.forEach(inputId => {
+                const input = document.getElementById(inputId);
+                if (input) {
+                    ['input', 'blur'].forEach(eventType => {
+                        input.addEventListener(eventType, () => validateField(input));
+                    });
+                }
+            });
+
+            // Form submission handler
+            form.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                // Validate all required fields
+                let isValid = true;
+                inputs.forEach(inputId => {
+                    const input = document.getElementById(inputId);
+                    if (input && (input.required || input.value.length > 0)) {
+                        if (!validateField(input)) {
+                            isValid = false;
+                        }
+                    }
+                });
+                
+                if (!isValid) {
+                    return;
+                }
+                
+                // Show loading spinner
+                document.getElementById('loadingSpinner').style.display = 'flex';
+
+                // Prepare the template parameters
+                const templateParams = {
+                    to_email: 'operations@tanraya.com',
+                    from_name: document.getElementById('name').value,
+                    company_name: document.getElementById('company').value,
+                    from_email: document.getElementById('email').value,
+                    phone_number: document.getElementById('phone').value,
+                    country: document.getElementById('country').value,
+                    interested_in: document.getElementById('interest').value,
+                    message: document.getElementById('message').value || 'No message provided'
+                };
+
+                // Send the email using EmailJS
+                emailjs.send('service_40d4abh', 'template_hu0d5bu', templateParams)
+                    .then(function(response) {
+                        // Hide loading spinner
+                        document.getElementById('loadingSpinner').style.display = 'none';
+                        
+                        // Show success modal
+                        document.getElementById('successModal').style.display = 'flex';
+                        
+                        // Reset the form
+                        form.reset();
+                        
+                        // Reset validation states
+                        inputs.forEach(inputId => {
+                            const input = document.getElementById(inputId);
+                            if (input) {
+                                input.classList.remove('is-valid', 'is-invalid');
+                            }
+                        });
+                    })
+                    .catch(function(error) {
+                        // Hide loading spinner
+                        document.getElementById('loadingSpinner').style.display = 'none';
+                        
+                        // Handle error
+                        alert('Sorry, there was an error sending your message. Please try again later.');
+                    });
+            });
+
+            // Close modal when clicking outside
+            window.onclick = function(event) {
+                const modal = document.getElementById('successModal');
+                if (event.target === modal) {
+                    closeModal();
+                }
+            };
+        });
+    </script>
+</body>
+</html>
